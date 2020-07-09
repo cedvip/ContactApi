@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ContactAppi.Data;
@@ -78,12 +76,20 @@ namespace ContactAppi.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<SkillDB>> PostSkill(SkillDB skill)
+        public async Task<ActionResult<Skill>> PostSkill(Skill skill)
         {
-            _context.Skills.Add(skill);
+            // Create the contact
+            var skillToCreate = new SkillDB
+            {
+                SkillName = skill.SkillName,
+                Level = skill.Level
+            };
+
+
+            _context.Skills.Add(skillToCreate);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetSkill", new { id = skill.SkillId }, skill);
+            return CreatedAtAction("GetSkill", new { id = skillToCreate.SkillId }, skillToCreate);
         }
 
         // DELETE: api/Skills/5

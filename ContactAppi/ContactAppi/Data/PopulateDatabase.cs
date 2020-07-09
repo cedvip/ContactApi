@@ -2,9 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace ContactAppi.Data
 {
@@ -31,12 +29,12 @@ namespace ContactAppi.Data
                 },
                 new SkillDB
                 {
-                    SkillName = "Accepté",
+                    SkillName = "Senior",
                     Level = 6
                 },
                 new SkillDB
                 {
-                    SkillName = "Refusé",
+                    SkillName = "Expert",
                     Level = 9
                 });
 
